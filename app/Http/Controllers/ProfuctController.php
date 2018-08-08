@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProfuctController extends Controller
 {
@@ -13,7 +14,8 @@ class ProfuctController extends Controller
      */
     public function index()
     {
-        //
+        $products=Product::all();
+        return view('products.index')->with('products',$products);
     }
 
     /**
@@ -23,7 +25,7 @@ class ProfuctController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**

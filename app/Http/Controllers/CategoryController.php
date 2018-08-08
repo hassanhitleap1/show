@@ -39,7 +39,7 @@ class CategoryController extends Controller
         }
         $category->name=$request->get('name');
         $category->save();
-       return redirect('category')->with('success', 'Information has been added');
+       return redirect('category');
     }
 
 
@@ -75,6 +75,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
+        Category::find($id)->delete();
+        return redirect('category');
     }
 }
