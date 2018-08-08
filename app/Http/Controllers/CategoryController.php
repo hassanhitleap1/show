@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -13,17 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $categories=Category::all();
+        return view('categories.index')->with('categories',$categories);
     }
 
     /**
@@ -34,19 +27,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     
+       $category= new Category;
+       
+       $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('category/create')->withErrors($validator)->withInput();
+        }
+        $category->name=$request->get('name');
+        $category->save();
+       return redirect('category')->with('success', 'Information has been added');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -79,6 +75,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo $id;
     }
 }
