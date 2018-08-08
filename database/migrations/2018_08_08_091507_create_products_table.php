@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('link');
-            $table->integer('clicked');
+            $table->string('image_path');
+            $table->integer('clicked')->default(0);
             $table->timestamps();
         });
     }

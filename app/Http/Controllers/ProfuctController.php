@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Validator;
 
 class ProfuctController extends Controller
 {
@@ -36,7 +37,36 @@ class ProfuctController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product= new Product;
+       
+        $validator = Validator::make($request->all(), [
+         'name' => 'required',
+         'description'=>'required',
+         'link'=>'required',
+         'image'=>'required|image',
+         ]);
+ 
+         if ($validator->fails()) {
+             return redirect('products/create')->withErrors($validator)->withInput();
+         }
+        $name="";
+        if ($request->hasFile('image')) {
+            if($request->file('image')->isValid()) {
+                try {
+                    $file = $request->file('image');
+                    $name = md5(uniqid(rand(), true)).'.'.$file->getClientOriginalExtension();
+                    $file->move('image/prodcut-image',$name);
+                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                    var_dump($e->getMessage()) ;
+                }
+            } 
+        }
+         $product->name=$request->get('name');
+         $product->description=$request->get('description');
+         $product->link=$request->get('link');
+         $product->image_path='image/prodcut-image/'.$name;
+         $product->save();
+        return redirect('products');
     }
 
     /**
@@ -47,7 +77,8 @@ class ProfuctController extends Controller
      */
     public function show($id)
     {
-        //
+        $product= Product::find($id);
+        return view('products.show')->with('product',$product);
     }
 
     /**
@@ -58,7 +89,8 @@ class ProfuctController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product= Product::find($id);
+        return view('products.edit')->with('product',$product);
     }
 
     /**
@@ -70,7 +102,35 @@ class ProfuctController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product= Product::find($id);
+       
+        $validator = Validator::make($request->all(), [
+         'name' => 'required',
+         'description'=>'required',
+         'link'=>'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+         ]);
+ 
+         if ($validator->fails()) {
+             return redirect('products/create')->withErrors($validator)->withInput();
+         }
+        $name="";
+        if ($request->hasFile('image')) {
+            if($request->file('image')->isValid()) {
+                try {
+                    $file = $request->file('image');
+                    $name = md5(uniqid(rand(), true)).'.'.$file->getClientOriginalExtension();
+                    $file->move('image/prodcut-image',$name);
+                    $product->image_path='image/prodcut-image/'.$name;
+                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                    var_dump($e->getMessage()) ;
+                }
+            } 
+        }
+         $product->name=$request->get('name');
+         $product->description=$request->get('description');
+         $product->link=$request->get('link');
+         $product->save();
+        return redirect('products');
     }
 
     /**
@@ -81,6 +141,7 @@ class ProfuctController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::find($id)->delete();
+        return redirect('index');
     }
 }

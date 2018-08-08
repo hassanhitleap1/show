@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+    <a class="btn btn-success" href="{{url('products/create')}}">create</a>
     <div class="table-responsive">
         <table class="table table-hover">
                 <thead>
@@ -28,6 +29,8 @@
                         <td>{{$product->description}}</td>
                         <td>{{$product->link}}</td>
                         <td>
+                            <a href="{{url('products/'.$product->id.'/edit')}}"><i class="fas fa-edit"></i></a>
+                            <a href="{{url('products/'.$product->id)}}"><i class="fas fa-eye"></i></a>
                             <form action="{{url('products',['id'=>$product->id] )}}" method="post" >
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
