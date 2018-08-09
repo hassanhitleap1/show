@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <form method="post" action="{{ url('products/'.$product->id) }}" aria-label="products"  enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="_method" value="put" />
+                        <input type="hidden" name="_method" value="Patch" />
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-md-right">Name</label>
 
@@ -48,6 +48,17 @@
                                         </span>
                                     @endif
                                 </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center">
+                            <button type="button" class="close" aria-label="Close" id="delete-iamge" model-id="{{$product->id}}">
+                                    <span aria-hidden="true">&times;</span>
+                            </button>
+                            <img src="{{asset($product->image_path)}}" class="rounded" alt="" style="    
+                            width: 41%;
+                            margin-left: 89px;
+                            margin-bottom: 10px;">                         
+                            </div>
                         </div> 
                         <div class="form-group row">
                                 <label for="file" class="col-sm-4 col-form-label text-md-right">Image</label>
@@ -75,4 +86,5 @@
         </div>
     </div>
 </div>
+<script src="{{asset('js/products.js')}}"></script>
 @endsection

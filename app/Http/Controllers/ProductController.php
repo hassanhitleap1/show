@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Validator;
+use File;
 
-class ProfuctController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -107,11 +108,11 @@ class ProfuctController extends Controller
         $validator = Validator::make($request->all(), [
          'name' => 'required',
          'description'=>'required',
-         'link'=>'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+         'link'=>'required',
          ]);
  
          if ($validator->fails()) {
-             return redirect('products/create')->withErrors($validator)->withInput();
+             return redirect('products/'.$id.'/edit')->withErrors($validator)->withInput();
          }
         $name="";
         if ($request->hasFile('image')) {
@@ -120,6 +121,9 @@ class ProfuctController extends Controller
                     $file = $request->file('image');
                     $name = md5(uniqid(rand(), true)).'.'.$file->getClientOriginalExtension();
                     $file->move('image/prodcut-image',$name);
+                    if(File::exists($product->image_path)) {
+                        File::delete($product->image_path);
+                    }
                     $product->image_path='image/prodcut-image/'.$name;
                 } catch (Illuminate\Filesystem\FileNotFoundException $e) {
                     var_dump($e->getMessage()) ;
@@ -141,7 +145,24 @@ class ProfuctController extends Controller
      */
     public function destroy($id)
     {
-        Product::find($id)->delete();
-        return redirect('index');
+        $product=Product::find($id);
+        if(File::exists($product->image_path)) {
+            File::delete($product->image_path);
+        }
+        $product->delete();
+        return redirect('products');
+    }
+
+    /**
+     * delete image product
+     * 
+     * @param int $id
+     */
+    public function deleteImage($id){
+        $product =Product::find($id);
+        if(File::exists($product->image_path)) {
+            File::delete($product->image_path);
+        }
+        return 1;
     }
 }

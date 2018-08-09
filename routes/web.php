@@ -21,4 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('category','CategoryController');
 
-Route::resource('products','ProfuctController');
+Route::resource('products','ProductController');
+
+Route::get('products/{id}/delete-image','ProductController@deleteImage');
