@@ -12,22 +12,19 @@
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Link</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
+                <tbody><?php $i=0;?>
                   @foreach($products as $product)
                   <tr>
-                    <th scope="row">{{$product->id}}</th>
+                    <th scope="row">{{++$i}}</th>
                         <td>{{$product->name}}</td>
                         <td>{{$product->description}}</td>
                         <td>{{$product->link}}</td>
+                        <td><img src="{{asset($product->image_path)}}" class="rounded" style="width: 180px;"> 
+                        </td>
                         <td>
                             <a href="{{url('products/'.$product->id.'/edit')}}"><i class="fas fa-edit"></i></a>
                             <a href="{{url('products/'.$product->id)}}"><i class="fas fa-eye"></i></a>
@@ -42,5 +39,6 @@
                 </tbody>
             </table>
         </div>
+        {{$products->links()}}
 </div>
 @endsection
