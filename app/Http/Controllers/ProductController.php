@@ -66,6 +66,7 @@ class ProductController extends Controller
          $product->description=$request->get('description');
          $product->link=$request->get('link');
          $product->image_path='image/prodcut-image/'.$name;
+        $product->at_home= ($request->get('at_home'))? 1:0;
          $product->save();
         return redirect('products');
     }
@@ -133,6 +134,7 @@ class ProductController extends Controller
          $product->name=$request->get('name');
          $product->description=$request->get('description');
          $product->link=$request->get('link');
+        $product->at_home=($request->get('at_home')) ? 1 : 0;
          $product->save();
         return redirect('products');
     }

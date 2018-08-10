@@ -55,13 +55,17 @@
                                 <div class="col-md-6">
                                     <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image"  >
     
-                                    @if ($errors->has('image'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image') }}</strong>
-                                        </span>
-                                    @endif
+
                                 </div>
-                        </div>                                                                        
+                        </div>   
+     
+                        <div class="form-group row">
+                                <label for="name" class="col-sm-4 col-form-label text-md-right"></label>
+                                <div class="col-md-6 custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="at_home" name="at_home" >
+                                    <label class="custom-control-label" for="at_home">do you want at home</label>
+                                </div>
+                        </div>                                                                                
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
