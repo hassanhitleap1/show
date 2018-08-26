@@ -49,6 +49,18 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                                <label for="color" class="col-sm-4 col-form-label text-md-right">color</label>
+    
+                                <div class="col-md-6">
+                                    <input type="color"  class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" name="color" value="#ff0000">
+                                    @if ($errors->has('color'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('color') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
