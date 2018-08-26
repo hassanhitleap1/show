@@ -12,6 +12,7 @@
                                     <tr>
                                     <th scope="col">id</th>
                                         <th scope="col">Name</th>
+                                        <th scope="col">color</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                     </thead>
@@ -21,6 +22,7 @@
                                 <tr>
                                     <th scope="row">{{$category->id}} </th>
                                     <td>{{$category->name}} </td>
+                                     <td><button type="button" class="btn"style="background:{{$category->color}};">color</button></td>
                                     <td>
                                             <form action="{{url('category',['id'=>$category->id] )}}" method="post" >
                                                     @csrf
