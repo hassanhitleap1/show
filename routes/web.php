@@ -24,3 +24,6 @@ Route::resource('products','ProductController');
 Route::get('products/{id}/delete-image','ProductController@deleteImage');
 
 Route::resource('slider','SliderController');
+
+Route::get('slider/{id}/delete-image','SliderController@deleteImage');
+

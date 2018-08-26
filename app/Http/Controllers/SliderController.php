@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Slider;
 use Validator;
-
+use File;
 class SliderController extends Controller
 {
     /**
@@ -15,8 +15,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slider= Slider::all();
-        return view('slider.index')->with('slider',$slider);
+        $sliders= Slider::all();
+        return view('slider.index')->with('sliders',$sliders);
     }
 
     /**
@@ -85,7 +85,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slider= Slider::find($id);
+        return view('slider.edit')->with('slider',$slider);
     }
 
     /**
@@ -139,6 +140,23 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $slider= Slider::find($id);
+        if(File::exists($slider->image_path)) {
+            File::delete($slider->image_path);
+        }
+        $slider->delete();
+        return redirect('slider');
+    }
+        /**
+     * delete image product
+     * 
+     * @param int $id
+     */
+    public function deleteImage($id){
+        $slider =Slider::find($id);
+        if(File::exists($slider->image_path)) {
+            File::delete($slider->image_path);
+        }
+        return 1;
     }
 }
