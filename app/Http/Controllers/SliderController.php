@@ -103,11 +103,11 @@ class SliderController extends Controller
        
         $validator = Validator::make($request->all(), [
          'link' => 'required',
-         'image'=>'required|image',
+         'image'=>'image',
          ]);
  
          if ($validator->fails()) {
-             return redirect('slider/create')->withErrors($validator)->withInput();
+             return redirect('slider/'.$id.'/edit')->withErrors($validator)->withInput();
          }
         $name="";
         if ($request->hasFile('image')) {
