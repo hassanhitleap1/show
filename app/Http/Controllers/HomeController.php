@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SavedProduct;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('index');
+    }
+
+
+    public function savedProduct($productId){
+        $model= new SavedProduct;
+        $model->product_id=$productId;
+        $model->user_id=Auth::user()->id;
+        $model-save();
     }
 }
