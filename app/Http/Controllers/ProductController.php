@@ -45,6 +45,7 @@ class ProductController extends Controller
          'description'=>'required',
          'link'=>'required',
          'image'=>'required|image',
+         'price'=>'required|numeric'
          ]);
  
          if ($validator->fails()) {
@@ -67,6 +68,7 @@ class ProductController extends Controller
          $product->link=$request->get('link');
          $product->image_path='image/prodcut-image/'.$name;
         $product->at_home= ($request->get('at_home'))? 1:0;
+        $product->price=$request->get('price');
          $product->save();
         return redirect('products');
     }
@@ -110,6 +112,7 @@ class ProductController extends Controller
          'name' => 'required',
          'description'=>'required',
          'link'=>'required',
+         'price'=>'required|numeric'
          ]);
  
          if ($validator->fails()) {
@@ -135,6 +138,7 @@ class ProductController extends Controller
          $product->description=$request->get('description');
          $product->link=$request->get('link');
         $product->at_home=($request->get('at_home')) ? 1 : 0;
+        $product->price=$request->get('price');
          $product->save();
         return redirect('products');
     }

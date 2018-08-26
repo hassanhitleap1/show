@@ -57,7 +57,20 @@
     
 
                                 </div>
-                        </div>   
+                        </div>
+                        <div class="form-group row">
+                                <label for="price" class="col-sm-4 col-form-label text-md-right">price</label>
+    
+                                <div class="col-md-6">
+                                    <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price"  >
+    
+                                    @if ($errors->has('price'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('price') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                        </div>  
      
                         <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label text-md-right"></label>
