@@ -2025,7 +2025,7 @@ ul.list-inline li {
   margin: 0;
 }
 .item .box-cart {
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 44px;
   border-top: 1px solid transparent;
