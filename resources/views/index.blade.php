@@ -59,8 +59,8 @@
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="item">
                                     <div class="product-extra-link">
-                                        <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye" aria-hidden="true"></i><span>Quick View</span></a>
-                                        <a href="{{$product->link}}" class="box-hidden wishlist"><i class="fa fa-heart" aria-hidden="true"></i><span> to Product</span></a>
+                                        <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
+                                        <a href="{{$product->link}}" class="box-hidden wishlist"><i class="fa fa-save fa-2x" aria-hidden="true"></i><span>Save to favorite Product</span></a>
                                     </div>
                                     <div class="thumb-product">
                                         <a href="{{$product->link}}"><img src="{{asset($product->image_path)}}" alt="" /></a>
