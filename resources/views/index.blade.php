@@ -55,6 +55,27 @@
             <div id="tab1" role="tabpanel" class="tab-pane fade in active">
                 <div class="wrap-product">
                     <div class="row">
+                        @foreach ($products as $product)
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                <div class="item">
+                                    <div class="product-extra-link">
+                                        <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye" aria-hidden="true"></i><span>Quick View</span></a>
+                                        <a href="{{$product->link}}" class="box-hidden wishlist"><i class="fa fa-heart" aria-hidden="true"></i><span> to Product</span></a>
+                                    </div>
+                                    <div class="thumb-product">
+                                        <a href="{{$product->link}}"><img src="{{asset($product->image_path)}}" alt="" /></a>
+                                    </div>
+                                    <div class="name-product">
+                                        <h3><a href="{{$product->link}}">Click here to go product</a></h3>
+                                    </div>
+                                    <div class="box-cart">
+                                        <a href="{{$product->link}}" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>
+                                        <ins class="price"><sup>$</sup>85<sup>.99</sup></ins>
+                                    </div>
+                                    <a href="customize.html" class="customize various" data-fancybox-type="iframe"><i class="fa fa-wrench" aria-hidden="true"></i> customize</a>
+                                </div>
+                        </div>
+                        @endforeach
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="item">
                                 <div class="product-extra-link">
