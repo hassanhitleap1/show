@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\SavedProduct;
 use App\Product;
 
+
 class HomeController extends Controller
 {
     /**
@@ -23,11 +24,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products=Product::paginate(10);
+        
+        if($request->category=='home'){
+            $products=Product::paginate(10); 
+        }
         return view('index')->with('products',$products);
     }
+    
 
 
     public function savedProduct($productId){

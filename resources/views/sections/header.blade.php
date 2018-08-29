@@ -1,3 +1,7 @@
+<?php
+use App\Category;
+$collection=Category::all();
+?>
 <div id="header">
     <div class="header">
         <div class="top-header">
@@ -12,8 +16,11 @@
                         <nav class="main-nav">
                             <a href="#" class="toggle-mobile-menu"><span></span></a>
                             <ul class="list-inline">
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="contact.html">contact</a></li>
+                                <li><a href="{{asset('/home')}}">Home</a></li>
+                                @foreach ($collection as $item)
+                                    <li><a href="{{asset($item->name)}}">{{$item->name}}</a></li>
+                                @endforeach
+                                    
                             </ul>
                         </nav>
                     </div>
