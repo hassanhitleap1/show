@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        
+        $products=Product::paginate(10); 
         if($request->category=='home'){
             $products=Product::paginate(10); 
         }
