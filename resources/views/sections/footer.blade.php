@@ -46,41 +46,29 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="info-box">
-                            <h3>Smart buy Guide</h3>
-                            <ul class="text list-inline">
-                                <li><a href="#">My account</a></li>
-                                <li><a href="#">Checkout</a></li>
-                                <li><a href="#">Order tracking</a></li>
-                                <li><a href="#">Return Order</a></li>
-                                <li><a href="#">Help & Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="box-cart">
-                            <h3>Payment Method</h3>
+                            <h3>Store Support us</h3>
                             <ul class="list-inline">
-                                <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-1.png')}}" alt="" /></a></li>
+                                <!-- <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-1.png')}}" alt="" /></a></li>
                                 <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-2.png')}}" alt="" /></a></li>
                                 <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-3.png')}}" alt="" /></a></li>
                                 <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-4.png')}}" alt="" /></a></li>
-                                <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-5.png')}}" alt="" /></a></li>
+                                <li><a href="#"><img src="{{asset('/smartbuy/images/cart/cart-5.png')}}" alt="" /></a></li> -->
                             </ul>
                         </div>
                         <div class="box-language">
                             <h3>Language</h3>
                             <ul class="list-inline">
                                 <li><a href="#"><img src="{{asset('/smartbuy/images/language/lg-1.png')}}" alt="" /></a></li>
-                                <li><a href="#"><img src="{{asset('/smartbuy/images/language/lg-2.png')}}" alt="" /></a></li>
+                                <!-- <li><a href="#"><img src="{{asset('/smartbuy/images/language/lg-2.png')}}" alt="" /></a></li>
                                 <li><a href="#"><img src="{{asset('/smartbuy/images/language/lg-3.png')}}" alt="" /></a></li>
-                                <li><a href="#"><img src="{{asset('/smartbuy/images/language/lg-4.png')}}" alt="" /></a></li>
+                                <li><a href="#"><img src="{{asset('/smartbuy/images/language/lg-4.png')}}" alt="" /></a></li> -->
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="box-madeby">
-                    <p>&copy; 2017 Powered by <a href="http://7uptheme.com/">7uptheme.com<sup>TM</sup></a>. All Rights Reserved</p>
+                    <p>&copy; from 2011 to {{date('Y')}} Powered by <a href="{{asset('/')}}">{{config('app.name')}}.com<sup>TM</sup></a>. All Rights Reserved</p>
                 </div>
             </div>
         </div>
