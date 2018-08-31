@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">category</div>
                 <div class="card-body">
-                    <form method="post" action="{{ url('products/'.$product->id) }}" aria-label="products"  enctype="multipart/form-data">
+                    <form method="post" action="{{ url('/admin/products/'.$product->id) }}" aria-label="products"  enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_method" value="Patch" />
                         <div class="form-group row">

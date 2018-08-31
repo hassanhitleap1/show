@@ -17,14 +17,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                            <?php $i=0?>
                             @foreach($categories as $category)
                                 <tr>
-                                    <th scope="row">{{$category->id}} </th>
+                                    <th scope="row">{{++$i}} </th>
                                     <td>{{$category->name}} </td>
                                      <td><button type="button" class="btn"style="background:{{$category->color}};">color</button></td>
                                     <td>
-                                            <form action="{{url('category',['id'=>$category->id] )}}" method="post" >
+                                            <form action="{{url('/admin/category',['id'=>$category->id] )}}" method="post" >
                                                     @csrf
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <button type="submit" value="Submit" class="fas fa-trash-alt"></button>
@@ -35,7 +35,7 @@
                         </tbody>
                     </table>
 
-                    <form method="POST" action="{{ url('category') }}" aria-label="category">
+                    <form method="POST" action="{{ url('/admin/category') }}" aria-label="category">
                         @csrf
 
                         <div class="form-group row">

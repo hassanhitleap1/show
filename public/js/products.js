@@ -2,7 +2,7 @@ $siteURL="http://localhost/shop/public";
 $(document).ready(function(){
     $("#delete-iamge").click(function(){
         id=$("#delete-iamge").attr("model-id");
-        URL=$siteURL+"/products/"+id+"/delete-image";
+        URL=$siteURL+"/admin/products/"+id+"/delete-image";
        $.ajax({
             method: "Get",
             url: URL,

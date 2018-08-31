@@ -36,12 +36,12 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('category/create')->withErrors($validator)->withInput();
+            return redirect('/admin/category/create')->withErrors($validator)->withInput();
         }
         $category->name=$request->get('name');
         $category->color=$request->get('color');
         $category->save();
-       return redirect('category');
+       return redirect('/admin/category');
     }
 
 
@@ -78,6 +78,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
-        return redirect('category');
+        return redirect('/admin/category');
     }
 }

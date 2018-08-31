@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
+<a class="btn btn-success" href="{{url('/admin/slider')}}">back</a>
     <div class="row justify-content-center">
+    
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">slider</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('slider') }}" aria-label="products"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('/admin/slider') }}" aria-label="products"  enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label text-md-right">Link</label>

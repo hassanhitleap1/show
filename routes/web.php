@@ -18,13 +18,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('category','CategoryController');
+Route::resource('/admin/category','CategoryController');
 
-Route::resource('products','ProductController');
+Route::resource('/admin/products','ProductController');
 
-Route::get('products/{id}/delete-image','ProductController@deleteImage');
+Route::get('/admin/products/{id}/delete-image','ProductController@deleteImage');
 
-Route::resource('slider','SliderController');
+Route::resource('/admin/slider','SliderController');
 
-Route::get('slider/{id}/delete-image','SliderController@deleteImage');
+Route::get('/admin/slider/{id}/delete-image','SliderController@deleteImage');
 

@@ -49,7 +49,7 @@ class ProductController extends Controller
          ]);
  
          if ($validator->fails()) {
-             return redirect('products/create')->withErrors($validator)->withInput();
+             return redirect('/admin/products/create')->withErrors($validator)->withInput();
          }
         $name="";
         if ($request->hasFile('image')) {
@@ -70,7 +70,7 @@ class ProductController extends Controller
         $product->at_home= ($request->get('at_home'))? 1:0;
         $product->price=$request->get('price');
          $product->save();
-        return redirect('products');
+        return redirect('/admin/products');
     }
 
     /**
@@ -116,7 +116,7 @@ class ProductController extends Controller
          ]);
  
          if ($validator->fails()) {
-             return redirect('products/'.$id.'/edit')->withErrors($validator)->withInput();
+             return redirect('/admin/products/'.$id.'/edit')->withErrors($validator)->withInput();
          }
         $name="";
         if ($request->hasFile('image')) {
@@ -140,7 +140,7 @@ class ProductController extends Controller
         $product->at_home=($request->get('at_home')) ? 1 : 0;
         $product->price=$request->get('price');
          $product->save();
-        return redirect('products');
+        return redirect('/admin/products');
     }
 
     /**
@@ -156,7 +156,7 @@ class ProductController extends Controller
             File::delete($product->image_path);
         }
         $product->delete();
-        return redirect('products');
+        return redirect('/admin/products');
     }
 
     /**

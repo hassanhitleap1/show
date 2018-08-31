@@ -45,7 +45,7 @@ class SliderController extends Controller
          ]);
  
          if ($validator->fails()) {
-             return redirect('slider/create')->withErrors($validator)->withInput();
+             return redirect('/admin/slider/create')->withErrors($validator)->withInput();
          }
         $name="";
         if ($request->hasFile('image')) {
@@ -63,7 +63,7 @@ class SliderController extends Controller
          $slider->image_path='image/slider-image/'.$name;
         $slider->published= ($request->get('published'))? 1:0;
          $slider->save();
-        return redirect('slider');
+        return redirect('/admin/slider');
     }
 
     /**
@@ -107,7 +107,7 @@ class SliderController extends Controller
          ]);
  
          if ($validator->fails()) {
-             return redirect('slider/'.$id.'/edit')->withErrors($validator)->withInput();
+             return redirect('/admin/slider/'.$id.'/edit')->withErrors($validator)->withInput();
          }
         $name="";
         if ($request->hasFile('image')) {
@@ -129,7 +129,7 @@ class SliderController extends Controller
          $slider->image_path='image/slider-image/'.$name;
         $slider->published= ($request->get('published'))? 1:0;
          $slider->save();
-        return redirect('slider');
+        return redirect('/admin/slider');
     }
 
     /**
@@ -145,7 +145,7 @@ class SliderController extends Controller
             File::delete($slider->image_path);
         }
         $slider->delete();
-        return redirect('slider');
+        return redirect('/admin/slider');
     }
         /**
      * delete image product
