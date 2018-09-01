@@ -22,8 +22,9 @@
                         <td>{{$slider->link}}</td>
                         <td><img src="{{asset($slider->image_path)}}" class="rounded" style="width: 180px;"> 
                         </td>
-                        <td>{{($slider->published)?'yes':'no'}}</td>
+                        <td>{{($slider->published)?'Published':'Un Published'}}</td>
                         <td>
+                            <a href="{{url('/admin/slider/'.$slider->id.'/publish')}}"><i class="{{($slider->published)?'fa fa-times':'fa fa-heart'}} "></i></a>
                             <a href="{{url('/admin/slider/'.$slider->id.'/edit')}}"><i class="fas fa-edit"></i></a>
                             <a href="{{url('/admin/slider/'.$slider->id)}}"><i class="fas fa-eye"></i></a>
                             <form action="{{url('/admin/slider',['id'=>$slider->id] )}}" method="post" >

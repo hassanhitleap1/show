@@ -27,4 +27,5 @@ Route::get('/admin/products/{id}/delete-image','ProductController@deleteImage');
 Route::resource('/admin/slider','SliderController');
 
 Route::get('/admin/slider/{id}/delete-image','SliderController@deleteImage');
+Route::get('/admin/slider/{id}/publish', 'SliderController@publish');
 

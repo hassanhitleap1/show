@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">slider</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/admin/slider') }}" aria-label="products"  enctype="multipart/form-data">
+                   <form method="POST" action="{{ url('/admin/slider/'.$slider->id) }}"   enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label text-md-right">Link</label>

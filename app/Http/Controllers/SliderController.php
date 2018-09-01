@@ -98,7 +98,8 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        echo "ihih";
+        exit;
         $slider= Slider::find($id);
        
         $validator = Validator::make($request->all(), [
@@ -119,14 +120,13 @@ class SliderController extends Controller
                     if(File::exists($product->image_path)) {
                         File::delete($product->image_path);
                     }
-                    $product->image_path='image/slider-image/'.$name;
+                    $slider->image_path='image/slider-image/'.$name;
                 } catch (Illuminate\Filesystem\FileNotFoundException $e) {
                     var_dump($e->getMessage()) ;
                 }
             } 
         }
          $slider->link=$request->get('link');
-         $slider->image_path='image/slider-image/'.$name;
         $slider->published= ($request->get('published'))? 1:0;
          $slider->save();
         return redirect('/admin/slider');
@@ -158,5 +158,24 @@ class SliderController extends Controller
             File::delete($slider->image_path);
         }
         return 1;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function publish($id)
+    {
+        $slider = Slider::find($id);
+        
+        if($slider->published){
+            $slider->published =Slider::UNPublished; 
+        }else {
+            $slider->published = Slider::Published; 
+        }
+        $slider->save();
+        return redirect('/admin/slider');
     }
 }
