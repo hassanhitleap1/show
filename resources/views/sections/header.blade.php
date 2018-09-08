@@ -24,59 +24,43 @@ $collection=Category::all();
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-3  col-xs-3">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                         <div class="box-right">
                             <ul class="list-inline">
-                                <li><a href="#" class="account"><i class="fa fa-user-o" aria-hidden="true"></i></a></li>
-                                <li class="mini-cart-box">
-                                    <a href="#"><i class="fa fa-opencart" aria-hidden="true"></i><sup>0</sup></a>
+                                <li class="mini-cart-box" >
+                                    @guest
+                                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i><sup></sup></a>
                                     <div class="mini-cart-content">
-                                        <h2>(2) Items in my cart</h2>
-                                        <div class="mini-cart-item">
-                                            <div class="product-mini-cart clearfix">
-                                                <div class="product-thumb">
-                                                    <a href="#"><img src="{{asset('/smartbuy/images/products/garden/garden-06.jpg')}}" alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h3 class="product-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <div class="price">
-                                                        <span class="old-price">$1,058.00</span>
-                                                        <span class="new-price">$1,150.00</span>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <div class="product-rating">
-                                                            <div class="inner-rating"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-mini-cart">
-                                                <div class="product-thumb">
-                                                    <a href="#"><img src="{{asset('/smartbuy/images/products/garden/garden-15-1.jpg')}}" alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h3 class="product-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <div class="price">
-                                                        <span class="old-price">$1,058.00</span>
-                                                        <span class="new-price">$1,150.00</span>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <div class="product-rating">
-                                                            <div class="inner-rating"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mini-cart-total  clearfix">
-                                            <strong class="pull-left">TOTAL</strong>
-                                            <span class="pull-right">$800.00</span>
-                                        </div>
-                                        <div class="mini-cart-button">
-                                            <a href="#">View cart </a>
-                                            <a href="#">Checkout</a>
-                                        </div>
+                                        <div class="contact-form">
+										    <h2 class="title18">login</h2>
+                                            <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                                                @csrf
+                                                <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                                 @if ($errors->has('email'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                                @if ($errors->has('password'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <input type="submit" value="login" class="shop-button" />
+                                            </form>
+									    </div>
                                     </div>
+                                    @else
+                                        <a  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="fa fa-user-o" aria-hidden="true"></i><sup>{{substr(Auth::user()->email, -5 )}} ...</sup></a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="fa fa-sign-out" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                            @csrf
+                                                </form>
+                                        </div>
+                                    @endguest
                                 </li>
                             </ul>
                         </div>

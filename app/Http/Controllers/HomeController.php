@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SavedProduct;
 use App\Product;
+use App\Slider;
 
 
 class HomeController extends Controller
@@ -27,10 +28,12 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $products=Product::paginate(10); 
+        $imagesSlider=Slider::where('published',Slider::Published)->get();
         if($request->category=='home'){
             $products=Product::paginate(10); 
         }
-        return view('index')->with('products',$products);
+        return view('index')->with('products',$products)
+                    ->with('imagesSlider',$imagesSlider);
     }
     
 

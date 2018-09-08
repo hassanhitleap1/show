@@ -3,48 +3,22 @@
 @section('content')
 <div class="box-slider">
     <div class="wrap-item" data-navigation="true" data-pagination="true" data-itemscustom="[[0,1]]" data-autoplay="false" data-transition="fade">
+        @foreach($imagesSlider as $image)
         <div class="wrap-slide">
             <div class="box-img">
-                <a href="#"><img src="{{asset('/smartbuy/images/slide/slide-1.jpg')}}" alt="" /></a>
+                <a href="{{$image->link}}"><img src="{{asset($image->image_path)}}" alt="" /></a>
             </div>
             <div class="box-info-slide">
                 <div class="container">
                     <div class="adv-info-slide">
-                        <h2 class="animated" data-animated="fadeInLeftBig">good shop</h2>
-                        <h3 class="animated" data-animated="flipInX">up to 50% off</h3>
-                        <a href="#" class="animated has-bottom" data-animated="bounceInLeft">shop now</a>
+                        <!-- <h2 class="animated" data-animated="fadeInLeftBig">good shop</h2>
+                        <h3 class="animated" data-animated="flipInX">up to 50% off</h3> -->
+                        <a href="{{$image->link}}" class="animated has-bottom" data-animated="bounceInLeft">shop now</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="wrap-slide">
-            <div class="box-img box-img-2">
-                <a href="#"><img src="{{asset('/smartbuy/images/slide/slide-2.jpg')}}" alt="" /></a>
-            </div>
-            <div class="box-info-slide">
-                <div class="container">
-                    <div class="adv-info-slide">
-                        <h2 class="animated" data-animated="fadeInLeftBig">supper shop</h2>
-                        <h3 class="animated" data-animated="flipInX">out top trend</h3>
-                        <a href="#" class="animated has-bottom" data-animated="bounceInLeft">shop now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="wrap-slide">
-            <div class="box-img box-img-3">
-                <a href="#"><img src="{{asset('/smartbuy/images/slide/slide-3.jpg')}}" alt="" /></a>
-            </div>
-            <div class="box-info-slide">
-                <div class="container">
-                    <div class="adv-info-slide">
-                        <h2 class="animated" data-animated="fadeInLeftBig">alo shop</h2>
-                        <h3 class="animated" data-animated="flipInX">out top seller</h3>
-                        <a href="#" class="animated has-bottom" data-animated="bounceInLeft">shop now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 
