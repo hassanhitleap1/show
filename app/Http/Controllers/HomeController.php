@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\SavedProduct;
 use App\Product;
 use App\Slider;
+use App\Category;
 
 
 class HomeController extends Controller
@@ -32,7 +33,13 @@ class HomeController extends Controller
         if($request->category=='home' ){
             $products=Product::paginate(10); 
         }else{
-            
+            if($request->category !=''){
+                $category = Category::where('name', $request->category)->first();
+                if(!empty($category)){
+                    $products = Product::where('category', $category->id)->paginate(10); 
+                }
+            }
+           
         }
         
         return view('index')->with('products',$products)
