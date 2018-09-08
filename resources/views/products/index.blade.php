@@ -13,6 +13,7 @@
                     <th scope="col">Description</th>
                     <th scope="col">Link</th>
                     <th scope="col">Image</th>
+                    <th scope="col">Category</th>
                     <th scope="col">At Home</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -26,6 +27,7 @@
                         <td>{{$product->link}}</td>
                         <td><img src="{{asset($product->image_path)}}" class="rounded" style="width: 180px;"> 
                         </td>
+                        <td>{{$product->infoCategory->name}}</td>
                         <td>{{($product->at_home)?'yes':'no'}}</td>
                         <td>
                             <a href="{{url('/admin/products/'.$product->id.'/edit')}}"><i class="fas fa-edit"></i></a>

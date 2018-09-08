@@ -29,9 +29,12 @@ class HomeController extends Controller
     {
         $products=Product::paginate(10); 
         $imagesSlider=Slider::where('published',Slider::Published)->get();
-        if($request->category=='home'){
+        if($request->category=='home' ){
             $products=Product::paginate(10); 
+        }else{
+            
         }
+        
         return view('index')->with('products',$products)
                     ->with('imagesSlider',$imagesSlider);
     }

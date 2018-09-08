@@ -79,7 +79,22 @@
                                     <input type="checkbox" class="custom-control-input" id="at_home" name="at_home" >
                                     <label class="custom-control-label" for="at_home">do you want at home</label>
                                 </div>
-                        </div>                                                                                
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-4 col-form-label text-md-right">Category</label>
+                            <div class="col-md-6">
+                                <select id="category"  class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('category'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('category') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>                                                                                 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

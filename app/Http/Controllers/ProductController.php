@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use Validator;
 use File;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -27,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::get();
+        return view('products.create')->with('categories', $categories);
     }
 
     /**
@@ -44,6 +46,7 @@ class ProductController extends Controller
          'name' => 'required',
          'description'=>'required',
          'link'=>'required',
+        'category' => 'required',
          'image'=>'required|image',
          'price'=>'required|numeric'
          ]);
@@ -66,6 +69,7 @@ class ProductController extends Controller
          $product->name=$request->get('name');
          $product->description=$request->get('description');
          $product->link=$request->get('link');
+        $product->category = $request->get('category');
          $product->image_path='image/prodcut-image/'.$name;
         $product->at_home= ($request->get('at_home'))? 1:0;
         $product->price=$request->get('price');
@@ -94,7 +98,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product= Product::find($id);
-        return view('products.edit')->with('product',$product);
+        $categories= Category::all();
+        return view('products.edit')->with('product',$product)->with('categories', $categories);
     }
 
     /**
@@ -111,6 +116,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
          'name' => 'required',
          'description'=>'required',
+        'category' => 'required',
          'link'=>'required',
          'price'=>'required|numeric'
          ]);
@@ -137,6 +143,7 @@ class ProductController extends Controller
          $product->name=$request->get('name');
          $product->description=$request->get('description');
          $product->link=$request->get('link');
+        $product->category = $request->get('category');
         $product->at_home=($request->get('at_home')) ? 1 : 0;
         $product->price=$request->get('price');
          $product->save();
