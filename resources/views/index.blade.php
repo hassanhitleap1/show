@@ -28,7 +28,7 @@
         <div class="tab-content">
             <div id="tab1" role="tabpanel" class="tab-pane fade in active">
                 <div class="wrap-product">
-                    <div class="row">
+                    <div class="row" id="products">
                         @foreach ($products as $product)
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="item">
@@ -60,7 +60,77 @@
         <div class="more">
             <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i>More</a>
         </div>
+        <div class="ajax-load text-center" style="display:none">
+            <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
+        </div>
     </div>
 </div>
+
+<script type="text/javascript">
+ var page = 1; //track user scroll as page number, right now page number is 1
+
+$(window).scroll(function () {
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function () {
+        page++; //page number increment
+        load_more(page); //load content  
+
+    }, 250));
+});   
+function load_more(page)
+{
+  $.ajax({
+            url: '?page=' + page,
+            type: "get",
+            dataType: 'json',
+            beforeSend: function()
+            {
+                $('.ajax-load').show();
+            }
+        }).done(function(data){
+             var data = jQuery.parseJSON(JSON.stringify(data));
+            if(data.products.data.length == 0){
+                //notify user if nothing to load
+                $('.ajax-load').html("No more records!");
+                return;
+            }
+            printProduct(data.products.data);
+            $('.ajax-load').hide(); //hide loading animation once data is received
+            // $("#results").append(data); //append data into #results element 
+                 
+        }).fail(function(jqXHR, ajaxOptions, thrownError){
+              alert('No response from server');
+        });
+ }
+
+ function printProduct(data) {
+     var content='';
+    $.each(data, function( index, value ) {
+        content+='<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">\n'+
+                    '<div class="item">\n'+
+                        '<div class="product-extra-link">\n'+
+                            '<a href="'+value.link+'" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>\n'+
+                            '<a href="'+value.link+'" class="box-hidden wishlist"><i class="fa fa-save fa-2x" aria-hidden="true"></i><span>Save to favorite Product</span></a>\n'+
+                        '</div>\n'+
+                        '<div class="thumb-product">\n'+
+                            '<a href="'+value.link+'"><img src="'+value.image_path+'" alt="" /></a>\n'+
+                        '</div>\n'+
+                        '<div class="name-product">\n'+
+                            '<h3><a href="'+value.link+'">Click here to go product</a></h3>\n'+
+                        '</div>\n'+
+                        '<div class="box-cart">\n'+
+                            '<a href="'+value.link+'" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>\n'+
+                            '<ins class="price"><sup>$</sup>'+value.price+'<sup>.99</sup></ins>\n'+
+                        '</div>\n'+
+                        '<div class="customize various" > '+value.description+'</div>\n'+
+                    '</div>\n'+
+                '</div>';
+    });
+     $("#products").append(content);
+     
+ }
+
+
+</script>
 
 @endsection

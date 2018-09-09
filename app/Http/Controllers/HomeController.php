@@ -9,6 +9,7 @@ use App\Slider;
 use App\Category;
 
 
+
 class HomeController extends Controller
 {
     /**
@@ -28,7 +29,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $products=Product::paginate(10); 
+        $products=Product::paginate(10);
+        if ($request->ajax()) {
+            $products = Product::paginate(10);
+            return response()->json(['products' => $products]);
+        }
         $imagesSlider=Slider::where('published',Slider::Published)->get();
         if($request->category=='home' ){
             $products=Product::paginate(10); 
