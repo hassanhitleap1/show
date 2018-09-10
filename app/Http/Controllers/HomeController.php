@@ -31,7 +31,14 @@ class HomeController extends Controller
     {
         $products=Product::paginate(10);
         if ($request->ajax()) {
-            $products = Product::paginate(10);
+            if($request->category !=''){
+                $category = Category::where('name', $request->category)->first();
+                if(!empty($category)){
+                    $products = Product::where('category', $category->id)->paginate(10); 
+                }
+            }else{
+                $products = Product::paginate(10);
+            }
             return response()->json(['products' => $products]);
         }
         $imagesSlider=Slider::where('published',Slider::Published)->get();

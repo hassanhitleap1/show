@@ -18,7 +18,7 @@ $collection=Category::all();
                             <ul class="list-inline">
                                 <li><a href="{{asset('/home')}}">Home</a></li>
                                 @foreach ($collection as $item)
-                                    <li><a href="{{asset($item->name)}}">{{$item->name}}</a></li>
+                                    <li><a href="{{asset('?category='.$item->name)}}">{{$item->name}}</a></li>
                                 @endforeach
                                     
                             </ul>
