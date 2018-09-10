@@ -28,4 +28,7 @@ Route::resource('/admin/slider','SliderController');
 
 Route::get('/admin/slider/{id}/delete-image','SliderController@deleteImage');
 Route::get('/admin/slider/{id}/publish', 'SliderController@publish');
+// Route::get('/admin',function(){
+//     return view('auth.login');
+// });
 

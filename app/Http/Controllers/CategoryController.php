@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use Validator;
 
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     /**
      * Display a listing of the resource.

@@ -8,7 +8,7 @@ use Validator;
 use File;
 use App\Category;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
     /**
      * Display a listing of the resource.

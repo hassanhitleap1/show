@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Slider;
 use Validator;
 use File;
-class SliderController extends Controller
+class SliderController extends BaseController
 {
     /**
      * Display a listing of the resource.

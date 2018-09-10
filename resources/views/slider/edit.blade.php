@@ -36,7 +36,7 @@
                                 </div>
                             </div> 
                         <div class="form-group row">
-                                <label for="file" class="col-sm-4 col-form-label text-md-right">Image</label>
+                                <label for="file" class="col-sm-4 col-form-label text-md-right">Image size must dimntions 1918*498</label>
     
                                 <div class="col-md-6">
                                     <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image"  >
