@@ -7,6 +7,7 @@ use App\SavedProduct;
 use App\Product;
 use App\Slider;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -62,10 +63,14 @@ class HomeController extends Controller
     
 
 
-    public function savedProduct($productId){
-        $model= new SavedProduct;
-        $model->product_id=$productId;
-        $model->user_id=Auth::user()->id;
-        $model-save();
+    public function savedProduct(Request $request){
+        if(Auth::user()){
+            $model = new SavedProduct;
+            $model->product_id = $request->item;
+            $model->user_id = Auth::user()->id;
+            $model->save();
+            return response()->json(['saved' => 1]); 
+        }
+        return response()->json(['saved' => 0]); 
     }
 }
