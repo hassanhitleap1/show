@@ -65,11 +65,17 @@ class HomeController extends Controller
 
     public function savedProduct(Request $request){
         if(Auth::user()){
-            $model = new SavedProduct;
-            $model->product_id = $request->item;
-            $model->user_id = Auth::user()->id;
-            $model->save();
-            return response()->json(['saved' => 1]); 
+            $model = SavedProduct::where('user_id', Auth::user()->id)->where('product_id',$request->item)->first();
+            if(empty($model)){
+                $model = new SavedProduct;
+                $model->product_id = $request->item;
+                $model->user_id = Auth::user()->id;
+                $model->save();
+                return response()->json(['saved' => 1]); 
+            }else {
+                $model->delete();
+                return response()->json(['saved' => 2]); 
+            }
         }
         return response()->json(['saved' => 0]); 
     }

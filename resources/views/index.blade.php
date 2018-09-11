@@ -34,7 +34,7 @@
                                 <div class="item">
                                     <div class="product-extra-link">
                                         <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
-                                        <a  item="{{$product->id}}" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true"></i><span>Save to favorite Product</span></a>
+                                        <a  item="{{$product->id}}" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true" style="{{(true)?'color: red':''.';'}}"></i><span>Save to favorite Product</span></a>
                                     </div>
                                     <div class="thumb-product">
                                         <a href="{{$product->link}}"><img src="{{asset($product->image_path)}}" alt="" /></a>
@@ -50,8 +50,6 @@
                                 </div>
                         </div>
                         @endforeach
-   
-        
                     </div>
                 </div>
             </div>
@@ -92,10 +90,15 @@ $(".saved").click(function (e) {
             }
         }).done(function(data){
             $('.ajax-load').hide(); //hide loading animation once data is received 
-            if(data.saved){
-              return;  
-            }  
-            alert('must be login');  
+            if(data.saved==1){
+                alert('saved');  
+               
+            }else if(data.saved==2){
+                alert('UnSaved'); 
+            }else{
+                alert('must be login'); 
+            }
+             
         }).fail(function(jqXHR, ajaxOptions, thrownError){
               alert('No response from server');
         });
