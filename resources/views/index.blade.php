@@ -34,7 +34,7 @@
                                 <div class="item">
                                     <div class="product-extra-link">
                                         <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
-                                        <a  item="{{$product->id}}" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true" style="{{(true)?'color: red':''.';'}}"></i><span>Save to favorite Product</span></a>
+                                        <a  item="{{$product->id}}" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true" style="{{($product->isSaved != null )?'color: red':''.';'}}"></i><span>Save to favorite Product</span></a>
                                     </div>
                                     <div class="thumb-product">
                                         <a href="{{$product->link}}"><img src="{{asset($product->image_path)}}" alt="" /></a>
