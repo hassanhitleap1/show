@@ -57,31 +57,38 @@
             </div>
            
         </div>
-        <div class="more">
+        <div class="more" id="more" category="{{!empty(@$_GET['category'])?$_GET['category']:''}}">
             <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i>More</a>
+            <div class="ajax-load text-center" style="display:none">
+                <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
+            </div>
         </div>
-        <div class="ajax-load text-center" style="display:none">
-            <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
-        </div>
+
     </div>
 </div>
 
 <script type="text/javascript">
  var page = 1; //track user scroll as page number, right now page number is 1
+var category=$("#more").attr('category');
+// $(window).scroll(function () {
+//     clearTimeout($.data(this, 'scrollTimer'));
+//     $.data(this, 'scrollTimer', setTimeout(function () {
+//         page++; //page number increment
+//         load_more(page); //load content  
 
-$(window).scroll(function () {
-    clearTimeout($.data(this, 'scrollTimer'));
-    $.data(this, 'scrollTimer', setTimeout(function () {
+//     }, 250));
+// });  
+$("#more").click(function (e) { 
+    e.preventDefault();
         page++; //page number increment
         load_more(page); //load content  
-
-    }, 250));
-});   
+}); 
 function load_more(page)
 {
   $.ajax({
             url: '?page=' + page,
             type: "get",
+            data:{category:category},
             dataType: 'json',
             beforeSend: function()
             {
@@ -91,6 +98,7 @@ function load_more(page)
              var data = jQuery.parseJSON(JSON.stringify(data));
             if(data.products.data.length == 0){
                 //notify user if nothing to load
+                $('.more').hide();
                 $('.ajax-load').html("No more records!");
                 return;
             }

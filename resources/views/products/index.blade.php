@@ -27,7 +27,7 @@
                         <td>{{$product->link}}</td>
                         <td><img src="{{asset($product->image_path)}}" class="rounded" style="width: 180px;"> 
                         </td>
-                        <td>{{$product->infoCategory->name}}</td>
+                        <td>{{$product->infoCategory['name']}}</td>
                         <td>{{($product->at_home)?'yes':'no'}}</td>
                         <td>
                             <a href="{{url('/admin/products/'.$product->id.'/edit')}}"><i class="fas fa-edit"></i></a>
