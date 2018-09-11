@@ -9,7 +9,7 @@ $collection=Category::all();
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                         <div class="logo">
-                            <a href="home-01.html"><img src="{{asset('/smartbuy/images/logo-1.png')}}" alt="" /></a>
+                            <a href="{{url('/')}}"><img src="{{asset('/smartbuy/images/logo-1.png')}}" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9">

@@ -29,26 +29,28 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $products=Product::paginate(10);
+        $products=Product::orderBy('id', 'desc')->paginate(10);
         if ($request->ajax()) {
             if($request->category !=''){
                 $category = Category::where('name', $request->category)->first();
                 if(!empty($category)){
-                    $products = Product::where('category', $category->id)->paginate(10); 
+                    $products = Product::where('category', $category->id)
+                    ->orderBy('id', 'desc')->paginate(10); 
                 }
             }else{
-                $products = Product::paginate(10);
+                $products = Product::orderBy('id', 'desc')->paginate(10);
             }
             return response()->json(['products' => $products]);
         }
         $imagesSlider=Slider::where('published',Slider::Published)->get();
         if($request->category=='home' ){
-            $products=Product::paginate(10); 
+            $products=Product::orderBy('id', 'desc')->paginate(10); 
         }else{
             if($request->category !=''){
                 $category = Category::where('name', $request->category)->first();
                 if(!empty($category)){
-                    $products = Product::where('category', $category->id)->paginate(10); 
+                    $products = Product::where('category', $category->id)
+                        ->orderBy('id', 'desc')->paginate(10); 
                 }
             }
            
