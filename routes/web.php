@@ -32,4 +32,7 @@ Route::get('/admin/slider/{id}/publish', 'SliderController@publish');
 //     return view('auth.login');
 // });
 
+
+Route::get('/contact', 'HomeController@contact');
+Route::post('/saved-contact', 'HomeController@contactSaved');
 Route::resource('/device','DeviceController');

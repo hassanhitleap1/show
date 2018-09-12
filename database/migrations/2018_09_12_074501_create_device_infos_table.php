@@ -27,7 +27,7 @@ class CreateDeviceInfosTable extends Migration
             $table->string('areaCode');
             $table->integer('user_id')->unique()->unsigned();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+           // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

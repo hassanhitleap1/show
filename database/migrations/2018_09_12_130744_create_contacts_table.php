@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClickProductsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateClickProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('click_products', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('ip');
+            $table->string('name');
+            $table->string('subject');
+            $table->string('email');
+            $table->text('message');
+            $table->string('image_path')->nullable();
+            $table->smallInteger('resolved')->default(0);
             $table->timestamps();
-            // $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('ip')->references('ip')->on('device_infos');
         });
     }
 
@@ -30,6 +32,6 @@ class CreateClickProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('click_products');
+        Schema::dropIfExists('contacts');
     }
 }
