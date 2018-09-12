@@ -15,11 +15,14 @@ class CreateClickProductsTable extends Migration
     {
         Schema::create('click_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->string('ip');
             $table->timestamps();
-            // $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('ip')->references('ip')->on('device_infos');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+           // $table->foreign('ip')->references('ip')->on('device_infos');
         });
     }
 

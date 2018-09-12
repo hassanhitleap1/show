@@ -25,9 +25,12 @@ class CreateDeviceInfosTable extends Migration
             $table->string('longitude');
             $table->string('metroCode');
             $table->string('areaCode');
-            $table->integer('user_id')->unique()->unsigned();
+            $table->integer('user_id')->unsigned()->unique();
             $table->timestamps();
-           // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
