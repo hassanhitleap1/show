@@ -124,4 +124,15 @@ class HomeController extends Controller
             Session::put('recorud', 'sucessfully send message');
         return redirect('contact');
     }
+
+    public function myFavorite(Request $request){
+        $savedProducts = SavedProduct::where('user_id', Auth::user()->id)
+        ->with('product')->orderBy('created_at', 'desc')->paginate(1);
+
+        if ($request->ajax()) {
+            return response()->json(['savedProducts' => $savedProducts]);
+        }
+
+        return view('my-favorite')->with('savedProducts', $savedProducts);
+    }
 }

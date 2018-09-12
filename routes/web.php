@@ -33,6 +33,7 @@ Route::get('/saved', 'HomeController@savedProduct')->name('savedProduct');
 //     return view('auth.login');
 // });
 
+Route::get('/my-favorite', 'HomeController@myFavorite');
 
 Route::get('/contact', 'HomeController@contact');
 Route::post('/saved-contact', 'HomeController@contactSaved');
