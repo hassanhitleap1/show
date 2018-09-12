@@ -79,6 +79,7 @@ $(window).scroll(function () {
 $(".saved").click(function (e) { 
     e.preventDefault();
     var item=$(this).attr('item');
+    var object=$(this);
      $.ajax({
             url: 'saved',
             type: "get",
@@ -91,9 +92,11 @@ $(".saved").click(function (e) {
         }).done(function(data){
             $('.ajax-load').hide(); //hide loading animation once data is received 
             if(data.saved==1){
+                $("a[item='" + data.item +"']").css({"color": "red"});
                 alert('saved');  
                
             }else if(data.saved==2){
+                 $("a[item='" + data.item +"']").css({"color": "black"});
                 alert('UnSaved'); 
             }else{
                 alert('must be login'); 

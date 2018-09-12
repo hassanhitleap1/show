@@ -10,6 +10,7 @@ use App\Category;
 use Validator;
 use Session;
 use App\Contact;
+use Auth;
 
 
 class HomeController extends Controller
@@ -72,10 +73,10 @@ class HomeController extends Controller
                 $model->product_id = $request->item;
                 $model->user_id = Auth::user()->id;
                 $model->save();
-                return response()->json(['saved' => 1]); 
+                return response()->json(['saved' => 1,"item"=> $request->item]); 
             }else {
                 $model->delete();
-                return response()->json(['saved' => 2]); 
+                return response()->json(['saved' => 2,'item'=> $request->item]); 
             }
         }
         return response()->json(['saved' => 0]); 
