@@ -7,8 +7,9 @@ use App\SavedProduct;
 use App\Product;
 use App\Slider;
 use App\Category;
-use Illuminate\Support\Facades\Auth;
-
+use Validator;
+use Session;
+use App\Contact;
 
 
 class HomeController extends Controller
@@ -78,5 +79,48 @@ class HomeController extends Controller
             }
         }
         return response()->json(['saved' => 0]); 
+    }
+
+
+    public function contact(){
+        return view('contact');
+    }
+
+
+    public function contactSaved(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'email|required',
+            'subject' => 'required',
+            'message' => 'required',
+            'image'=>'image'
+            ]);
+
+            if ($validator->fails()) {
+                return redirect('/contact')->withErrors($validator)->withInput();
+            }
+            $model = new Contact;
+            $name="";
+            if ($request->hasFile('image')) {
+                if($request->file('image')->isValid()) {
+                    try {
+                        $file = $request->file('image');
+                        $name = md5(uniqid(rand(), true)).'.'.$file->getClientOriginalExtension();
+                        $file->move('image/contact-mage',$name);
+                        $model->image_path='image/contact-mage'.$name;
+                    } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                        var_dump($e->getMessage()) ;
+                    }
+                } 
+            }
+
+            
+            $model->name=$request->name;
+            $model->email=$request->email;
+            $model->subject=$request->subject;
+            $model->message=$request->message;
+            $model->save();
+            Session::put('recorud', 'sucessfully send message');
+        return redirect('contact');
     }
 }

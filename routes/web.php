@@ -33,3 +33,9 @@ Route::get('/saved', 'HomeController@savedProduct')->name('savedProduct');
 //     return view('auth.login');
 // });
 
+
+Route::get('/contact', 'HomeController@contact');
+Route::post('/saved-contact', 'HomeController@contactSaved');
+Route::resource('/device','DeviceController');
+
+Route::resource('/admin/contact','ContactController');
