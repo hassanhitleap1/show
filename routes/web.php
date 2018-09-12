@@ -32,3 +32,4 @@ Route::get('/admin/slider/{id}/publish', 'SliderController@publish');
 //     return view('auth.login');
 // });
 
+Route::resource('/device','DeviceController');
