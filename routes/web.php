@@ -36,3 +36,5 @@ Route::get('/admin/slider/{id}/publish', 'SliderController@publish');
 Route::get('/contact', 'HomeController@contact');
 Route::post('/saved-contact', 'HomeController@contactSaved');
 Route::resource('/device','DeviceController');
+
+Route::resource('/admin/contact','ContactController');

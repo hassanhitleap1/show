@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contact;
 
-class ContactController extends Controller
+class ContactController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts=Contact::paginate(10);
+        return view('contacts.index')->with('contacts',$contacts);
     }
 
     /**
