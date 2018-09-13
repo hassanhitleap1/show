@@ -40,3 +40,5 @@ Route::post('/saved-contact', 'HomeController@contactSaved');
 Route::resource('/device','DeviceController');
 
 Route::resource('/admin/contact','ContactController');
+
+Route::get('/admin/contact/{id}/check', 'ContactController@check');

@@ -14,7 +14,7 @@ class ContactController extends BaseController
      */
     public function index()
     {
-        $contacts=Contact::paginate(10);
+        $contacts=Contact::orderby('id','DESC')->paginate(10);
         return view('contacts.index')->with('contacts',$contacts);
     }
 
@@ -23,9 +23,12 @@ class ContactController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function check($id)
     {
-        //
+        $model= Contact::find($id);
+        $model->resolved=Contact::Resolved;
+        $model->save();
+        return redirect('/admin/contact');
     }
 
     /**
@@ -47,7 +50,8 @@ class ContactController extends BaseController
      */
     public function show($id)
     {
-        //
+        $model= Contact::find($id);
+        return view('contacts.show')->with('model',$model);
     }
 
     /**

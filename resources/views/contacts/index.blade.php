@@ -25,14 +25,17 @@
                         <td>{{$contact->name}}</td>
                         <td>{{$contact->email}}</td>
                         <td>{{$contact->subject}}</td>
-                        <td>{{$contact->messages}}</td>
-                        <td>{{($contact->resolved)?'yes':'no'}}</td>
+                        <td>{{$contact->message}}</td>
                         <td><img src="{{asset($contact->image_path)}}" class="rounded" style="width: 180px;"> 
                         </td>
-
+                        <td>{{($contact->resolved)?'yes':'no'}}</td>
                         <td>
-                            <a href="{{url('/admin/contacts/'.$contact->id.'/edit')}}"><i class="fas fa-edit"></i></a>
-                            <a href="{{url('/admin/contacts/'.$contact->id)}}"><i class="fas fa-eye"></i></a>
+                          @if($contact->resolved)
+                          <a href=""><i class="fas fa-check-double"></i></a>
+                          @else
+                          <a href="{{url('/admin/contact/'.$contact->id.'/check')}}"><i class="fas fa-check" style="color:red;"></i></a>
+                          @endif
+                            <a href="{{url('/admin/contact/'.$contact->id)}}"><i class="fas fa-eye"></i></a>
                         </td>
                     </tr>
                   @endforeach
