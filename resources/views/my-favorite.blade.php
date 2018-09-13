@@ -1,6 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
+<div class="box-breadcrumb">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="{{url('/')}}">Home <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li><a href="{{url('//my-favorite')}}">My Favorite</a></li>
+            </ul>
+        </div>
+</div>
 <div class="container">
     <div class="box-product box-has-filter">
         <h2> My favorite</h2>

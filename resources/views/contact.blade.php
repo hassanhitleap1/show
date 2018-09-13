@@ -4,8 +4,8 @@
 <div class="box-breadcrumb">
     <div class="container">
         <ul class="list-inline">
-            <li><a href="#">Home <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            <li><a href="#">Appliances</a></li>
+            <li><a href="{{url('/')}}">Home <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            <li><a href="{{url('/contact')}}">Contact</a></li>
         </ul>
     </div>
 </div>
