@@ -12,7 +12,7 @@
                                 <div class="item">
                                     <div class="product-extra-link">
                                         <a href="{{$savedProduct->product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
-                                        <a  item="{{$savedProduct->product->id}}" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true" style="{{($savedProduct->product->isSaved != null )?'color: red':''.';'}}"></i><span>Save to favorite Product</span></a>
+                                        <a  item="{{$savedProduct->product->id}}" class="box-hidden wishlist saved"><i class="fa fa-trash fa-2x" aria-hidden="true" style="color: red;"></i><span>Save to favorite Product</span></a>
                                     </div>
                                     <div class="thumb-product">
                                         <a href="{{$savedProduct->product->link}}"><img src="{{asset($savedProduct->product->image_path)}}" alt="" /></a>
@@ -90,7 +90,7 @@
                        '<div class="item">\n'+
                            '<div class="product-extra-link">\n'+
                                '<a href="'+value.product.link+'" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>\n'+
-                               '<a item="'+value.product.id+'" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true"></i><span>Save to favorite Product</span></a>\n'+
+                               '<a item="'+value.product.id+'" class="box-hidden wishlist saved"><i class="fa fa-trash fa-2x" aria-hidden="true" style="color: red;"></i><span>Save to favorite Product</span></a>\n'+
                            '</div>\n'+
                            '<div class="thumb-product">\n'+
                                '<a href="'+value.link+'"><img src="'+value.product.image_path+'" alt="" /></a>\n'+
