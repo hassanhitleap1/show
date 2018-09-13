@@ -33,7 +33,6 @@
                     alert('Add to favourite');  
                 
                 }else if(data.saved==2){
-                    alert(".saved[item='"+data.item+"']");
                     $(".saved[item='"+data.item+"']").css({"color": ""});
                     $(".saved[item='"+data.item+"']").css({"color": "black"});
                     $("a[item='"+data.item+"']>i").removeClass( "fa fa-trash fa-2x" ).addClass( "fa fa-save fa-2x" );
