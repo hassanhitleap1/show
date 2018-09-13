@@ -12,8 +12,7 @@
     }); 
 
     // click save event 
-    $(".saved").click(function (e) { 
-        e.preventDefault();
+    $(document).on('click', ".saved", function() {
         var item=$(this).attr('item');
         var object=$(this);
         $.ajax({
@@ -28,14 +27,16 @@
             }).done(function(data){
                 $('.ajax-load').hide(); //hide loading animation once data is received 
                 if(data.saved==1){
-                    $("a[item='" + data.item +"']").css({"color": "red"});
-                    alert('saved');  
+                    $(".saved[item='"+data.item+"']").css({"color": "red"});
+                    $("a[item='"+data.item+"']>i").removeClass( "fa fa-save fa-2x" ).addClass( "fa fa-trash fa-2x" );
+                    alert('Add to favourite');  
                 
                 }else if(data.saved==2){
-                    $("a[item='" + data.item +"']").css({"color": "black"});
-                    alert('UnSaved'); 
+                    $(".saved[item='"+data.item+"']").css({"color": "black"});
+                    $("a[item='"+data.item+"']>i").removeClass( "fa fa-trash fa-2x" ).addClass( "fa fa-save fa-2x" );
+                    alert('trash from favourite'); 
                 }else{
-                    alert('must be login'); 
+                    alert('Must be login'); 
                 }
                 
             }).fail(function(jqXHR, ajaxOptions, thrownError){
@@ -86,7 +87,7 @@
                         '<div class="item">\n'+
                             '<div class="product-extra-link">\n'+
                                 '<a href="'+value.link+'" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>\n'+
-                                '<a item="'+value.id+'" class="box-hidden wishlist saved"><i class="fa fa-save fa-2x" aria-hidden="true"></i><span>Save to favorite Product</span></a>\n'+
+                                '<a item="'+value.id+'" class="box-hidden wishlist saved"><i class="'+((value.is_saved == null) ? 'fa fa-save fa-2x' : 'fa fa-trash fa-2x')+'" aria-hidden="true" style="' +((value.is_saved == null) ? 'color:black' : 'color:red')+';"></i><span>Save to favorite Product</span></a>\n'+
                             '</div>\n'+
                             '<div class="thumb-product">\n'+
                                 '<a href="'+value.link+'"><img src="'+value.image_path+'" alt="" /></a>\n'+
