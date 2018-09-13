@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="box-cart">
                                         <a href="{{$savedProduct->product->link}}" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>
-                                        <ins class="price"><sup>$</sup>{{$savedProduct->product->price}}<sup>.99</sup></ins>
+                                        <ins class="price"><sup>$</sup>{{floor($savedProduct->product->price)}}<sup>.{{ltrim(($savedProduct->product->price - floor($savedProduct->product->price)),"0.")}}</sup></ins>
                                     </div>
                                     <div class="customize various" > {{$savedProduct->product->description}}</div>
                                 </div>

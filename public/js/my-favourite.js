@@ -62,7 +62,7 @@ var page = 1; //track user scroll as page number, right now page number is 1
                             '</div>\n'+
                             '<div class="box-cart">\n'+
                                 '<a href="'+value.product.link+'" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>\n'+
-                                '<ins class="price"><sup>$</sup>'+value.product.price+'<sup>.99</sup></ins>\n'+
+                                '<ins class="price"><sup>$</sup>'+Math.floor(value.product.price)+'<sup>'+String(value.product.price.toFixed(2)).slice(String(value.product.price.toFixed(2)).indexOf('.')) +'</sup></ins>\n'+
                             '</div>\n'+
                             '<div class="customize various" > '+value.product.description+'</div>\n'+
                         '</div>\n'+
