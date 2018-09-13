@@ -33,12 +33,12 @@
             </div>
            
         </div>
-        <div class="more" id="more" >
+        {{-- <div class="more" id="more" >
             <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i>More</a>
             <div class="ajax-load text-center" style="display:none">
                 <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>
