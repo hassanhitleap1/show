@@ -99,7 +99,7 @@
                             '</div>\n'+
                             '<div class="box-cart">\n'+
                                 '<a href="'+value.link+'" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>\n'+
-                                '<ins class="price"><sup>$</sup>'+value.price+'<sup>.99</sup></ins>\n'+
+                                '<ins class="price"><sup>$</sup>'+Math.floor(value.price)+'<sup>'+String(value.price.toFixed(2)).slice(String(value.price.toFixed(2)).indexOf('.')) +'</sup></ins>\n'+
                             '</div>\n'+
                             '<div class="customize various" > '+value.description+'</div>\n'+
                         '</div>\n'+
