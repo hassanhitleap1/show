@@ -56,6 +56,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/admin/category') }}">Category</a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/admin/contact') }}">Contact</a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -66,7 +69,7 @@
                         @else
         
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
+                                <a class="nav-link" href="#">('{{ Auth::user()->name }}')</a>
                             </li>
                             <li class="nav-item">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
