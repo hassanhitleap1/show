@@ -14,7 +14,6 @@
     // click save event 
     $(document).on('click', ".saved", function() {
         var item=$(this).attr('item');
-        var object=$(this);
         $.ajax({
                 url: 'saved',
                 type: "get",

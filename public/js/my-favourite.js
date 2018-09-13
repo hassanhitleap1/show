@@ -48,7 +48,7 @@ var page = 1; //track user scroll as page number, right now page number is 1
     function printProduct(data) {
         var content='';
         $.each(data, function( index, value ) {
-            content+='<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">\n'+
+            content+='<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"  id="'+value.product.id+'">\n'+
                         '<div class="item">\n'+
                             '<div class="product-extra-link">\n'+
                                 '<a href="'+value.product.link+'" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>\n'+
@@ -71,3 +71,33 @@ var page = 1; //track user scroll as page number, right now page number is 1
         $("#products").append(content);
         
     }
+
+
+        // click save event 
+    $(document).on('click', ".saved", function() {
+        var item=$(this).attr('item');
+        $.ajax({
+                url: 'saved',
+                type: "get",
+                data:{item:item},
+                dataType: 'json',
+                beforeSend: function()
+                {
+                    $('.ajax-load').show();
+                }
+            }).done(function(data){
+                $('.ajax-load').hide(); //hide loading animation once data is received 
+                if(data.saved==1){
+                    alert('Add to favourite');  
+                
+                }else if(data.saved==2){
+                    $( "#"+data.item ).remove();
+                    alert('trash from favourite'); 
+                }else{
+                    alert('Must be login'); 
+                }
+                
+            }).fail(function(jqXHR, ajaxOptions, thrownError){
+                alert('No response from server');
+            });
+    }); 

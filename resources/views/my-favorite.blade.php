@@ -3,12 +3,13 @@
 @section('content')
 <div class="container">
     <div class="box-product box-has-filter">
+        <h2> My favorite</h2>
         <div class="tab-content">
             <div id="tab1" role="tabpanel" class="tab-pane fade in active">
                 <div class="wrap-product">
                     <div class="row" id="products">
                         @foreach ($savedProducts as $savedProduct)
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="{{$savedProduct->product->id}}">
                                 <div class="item">
                                     <div class="product-extra-link">
                                         <a href="{{$savedProduct->product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
