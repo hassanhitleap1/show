@@ -15,7 +15,7 @@
                             <label for="name" class="col-sm-4 col-form-label text-md-right">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"  >
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" >
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -28,8 +28,7 @@
                                 <label for="name" class="col-sm-4 col-form-label text-md-right">Description</label>
     
                                 <div class="col-md-6">
-                                <textarea rows="4" cols="50" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" > 
-                                </textarea>
+                                <textarea rows="4" cols="50" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" >{{ old('description') }}</textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -63,7 +62,7 @@
                                 <label for="price" class="col-sm-4 col-form-label text-md-right">price</label>
     
                                 <div class="col-md-6">
-                                    <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price"  >
+                                    <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price"  value="{{ old('price') }}">
     
                                     @if ($errors->has('price'))
                                         <span class="invalid-feedback" role="alert">

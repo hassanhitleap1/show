@@ -15,7 +15,7 @@
                                 <label for="name" class="col-sm-4 col-form-label text-md-right">Link</label>
     
                                 <div class="col-md-6">
-                                    <input id="link" type="text" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link"  >
+                                    <input id="link" type="text" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="{{ old('link') }}"  >
     
                                     @if ($errors->has('link'))
                                         <span class="invalid-feedback" role="alert">
