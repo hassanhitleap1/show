@@ -11,6 +11,8 @@
                     <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12">
                         <div class="footer-menu">
                             <ul class="list-inline">
+                                <li><a href="{{url('/login')}}">Login</a></li> 
+                                <li><a href="{{url('/register')}}">Register</a></li> 
                                 <li><a href="{{url('/contact')}}">contact</a></li> 
                                 {{-- <li><a href="#">about us</a></li>
                                 <li><a href="#">blog</a></li>
