@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container">
-    <a class="btn btn-success" href="{{url('/admin/products/create')}}">create</a>
     <div class="table-responsive">
         <table class="table table-hover">
                 <thead>
