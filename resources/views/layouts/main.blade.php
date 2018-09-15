@@ -9,10 +9,19 @@
     @include('sections.header')
     <!-- End Header -->
     <div id="content">
+        	<div class="box-search">
+					<form class="search-form search-form6 clearfix" action="{{url('/')}}" method="GET">
+						<input type="text"   name="search" placeholder="Search" onfocus="if (this.value==this.defaultValue) this.value = ''" onblur="if (this.value=='') this.value = this.defaultValue">
+						<div class="submit-from">
+							<input type="submit" value="">
+						</div>
+					</form>
+				</div>
         <div class="content">
             @yield('content')
         </div>
     </div>
+
     <!-- End Content -->
     @include('sections.footer')
     <!-- End Footer -->

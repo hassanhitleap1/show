@@ -55,7 +55,7 @@
             </div>
            
         </div>
-        <div class="more" id="more" category="{{!empty(@$_GET['category'])?$_GET['category']:''}}">
+        <div class="more" id="more" category="{{!empty(@$_GET['category'])?$_GET['category']:''}}"   search="{{isset($_GET['search'])?$_GET['search']:''}}">
             <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i>More</a>
             <div class="ajax-load text-center" style="display:none">
                 <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>

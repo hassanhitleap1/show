@@ -32,35 +32,43 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $products=Product::orderBy('id', 'desc')->with('isSaved')->paginate(10);
+        $products=Product::where([]);
+        $imagesSlider = Slider::where('published', Slider::Published)->get();
         if ($request->ajax()) {
             if($request->category !=''){
                 $category = Category::where('name', $request->category)->first();
                 if(!empty($category)){
-                    $products = Product::where('category', $category->id)
-                    ->orderBy('id', 'desc')->with('isSaved')->paginate(10); 
+                    $products = $products->where('category', $category->id); 
                 }
-            }else{
-                $products = Product::orderBy('id', 'desc')->with('isSaved')->paginate(10);
             }
+            if ($request->search != '') {
+                $search = $request->search;
+                $products->where(function ($products) use ($search) {
+                    $products->orwhere('name', 'like', '%' . trim($search) . '%')
+                        ->orwhere('description', 'like', '%' . trim($search) . '%');
+                }); 
+            }
+            $products= $products->orderBy('id', 'desc')->with('isSaved')->paginate(10);
             return response()->json(['products' => $products]);
         }
-        $imagesSlider=Slider::where('published',Slider::Published)->get();
-        if($request->category=='home' ){
-            $products=Product::orderBy('id', 'desc')->with('isSaved')->paginate(10); 
-        }else{
-            if($request->category !=''){
-                $category = Category::where('name', $request->category)->first();
-                if(!empty($category)){
-                    $products = Product::where('category', $category->id)
-                        ->orderBy('id', 'desc')->with('isSaved')->paginate(10); 
-                }
+
+        if ($request->category != '') {
+            $category = Category::where('name', $request->category)->first();
+            if (!empty($category)) {
+                $products = $products->where('category', $category->id);
             }
-           
         }
-        
+        if ($request->search != '') {
+            $search = $request->search;
+            $products->where(function ($products) use ($search) {
+                $products->orwhere('name', 'like', '%' . trim($search) . '%')
+                    ->orwhere('description', 'like', '%' . trim($search) . '%');
+            });
+        }
+        $products =$products->orderBy('id', 'desc')->with('isSaved')->paginate(10);
         return view('index')->with('products',$products)
                     ->with('imagesSlider',$imagesSlider);
+
     }
     
 
