@@ -36,7 +36,7 @@ class CategoryController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/category/create')->withErrors($validator)->withInput();
+            return redirect('/admin/category')->withErrors($validator)->withInput();
         }
         $category->name=$request->get('name');
         $category->color=$request->get('color');

@@ -1,5 +1,6 @@
     var page = 1; //track user scroll as page number, right now page number is 1
     var category=$("#more").attr('category');
+    var search = $(this).attr('search');
 
     // scroll event 
     $(window).scroll(function () {
@@ -57,7 +58,7 @@
         $.ajax({
                 url: '?page=' + page,
                 type: "get",
-                data:{category:category},
+                data: { category: category, search:search},
                 dataType: 'json',
                 beforeSend: function()
                 {
