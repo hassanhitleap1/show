@@ -40,6 +40,8 @@ class HomeController extends Controller
                 if(!empty($category)){
                     $products = $products->where('category', $category->id); 
                 }
+            }else{
+                $products = $products->where('at_home', Product::IN_HOME); 
             }
             if ($request->search != '') {
                 $search = $request->search;
@@ -57,6 +59,8 @@ class HomeController extends Controller
             if (!empty($category)) {
                 $products = $products->where('category', $category->id);
             }
+        }else{
+            $products = $products->where('at_home', Product::IN_HOME); 
         }
         if ($request->search != '') {
             $search = $request->search;
