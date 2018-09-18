@@ -19,7 +19,7 @@ $collection=Category::all();
                                 <li class="menu-item" style="background:red;"><span class="fa fa-address-book  fa-2x"></span><a href="{{asset('/home')}}">Home</a></li>
                                 @foreach ($collection as $item)
                                     <li class="menu-item" style="background:{{$item->color}};">
-                                        <span class="fa fa-address-book fa-2x"></span>
+                                        <span class="{{$item->classes}} fa-2x"></span>
                                         <a href="{{asset('?category='.$item->name)}}">{{$item->name}}</a></li>
                                 @endforeach
                                     

@@ -42,11 +42,24 @@
                             <label for="name" class="col-sm-4 col-form-label text-md-right">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"  autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"  value="{{ old('name') }}" >
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="classes" class="col-sm-4 col-form-label text-md-right">classes</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('classes') ? ' is-invalid' : '' }}" name="classes"   value="{{ old('classes') }}">
+
+                                @if ($errors->has('classes'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('classes') }}</strong>
                                     </span>
                                 @endif
                             </div>
