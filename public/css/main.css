@@ -1,0 +1,16 @@
+.menu-item{
+    border: 1px solid;
+    width: 119px;
+    height: 61px;
+    text-align: center;
+    margin: 1px;
+    
+}
+.fa{
+    margin: 5px;
+}
+
+.menu-item:hover{
+    height: 71px;
+}
+

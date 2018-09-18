@@ -16,9 +16,11 @@ $collection=Category::all();
                         <nav class="main-nav">
                             <a href="#" class="toggle-mobile-menu"><span></span></a>
                             <ul class="list-inline">
-                                <li><a href="{{asset('/home')}}">Home</a></li>
+                                <li class="menu-item" style="background:red;"><span class="fa fa-address-book  fa-2x"></span><a href="{{asset('/home')}}">Home</a></li>
                                 @foreach ($collection as $item)
-                                    <li><a href="{{asset('?category='.$item->name)}}">{{$item->name}}</a></li>
+                                    <li class="menu-item" style="background:{{$item->color}};">
+                                        <span class="fa fa-address-book fa-2x"></span>
+                                        <a href="{{asset('?category='.$item->name)}}">{{$item->name}}</a></li>
                                 @endforeach
                                     
                             </ul>
