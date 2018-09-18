@@ -31,7 +31,7 @@ $collection=Category::all();
                             <ul class="list-inline">
                                 <li class="mini-cart-box" >
                                     @guest
-                                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i><sup></sup></a>
+                                    <a href="#"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i><sup></sup></a>
                                     <div class="mini-cart-content">
                                         <div class="contact-form">
                                             <div class="box-product box-has-filter">
