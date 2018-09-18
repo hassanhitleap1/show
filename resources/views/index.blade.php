@@ -46,7 +46,7 @@
                                         <a href="{{$product->link}}" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>
                                         <ins class="price"><sup>$</sup>{{floor($product->price)}}<sup>.{{ltrim(($product->price - floor($product->price)),"0.")}}</sup></ins>
                                     </div>
-                                    <div class="customize various" > {{$product->description}}</div>
+                                    <div class="customize various" > {{ substr($product->description,0,100)}}...</div>
                                 </div>
                         </div>
                         @endforeach
