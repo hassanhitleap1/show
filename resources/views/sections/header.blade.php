@@ -7,12 +7,12 @@ $collection=Category::all();
         <div class="top-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="logo">
                             <a href="{{url('/')}}"><img src="{{asset('/smartbuy/images/logo-1.png')}}" alt="" /></a>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9">
+                    <div class="col-lg-7 col-md-7 col-sm-9 col-xs-9">
                         <nav class="main-nav">
                             <a href="#" class="toggle-mobile-menu"><span></span></a>
                             <ul class="list-inline">
