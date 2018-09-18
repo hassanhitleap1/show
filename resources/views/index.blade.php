@@ -31,6 +31,7 @@
                     <div class="row" id="products">
                         @foreach ($products as $product)
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <h4>{{$product->name}}</h4>
                                 <div class="item">
                                     <div class="product-extra-link">
                                         <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
