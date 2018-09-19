@@ -1,7 +1,15 @@
-.nav-item {
-    border: 1px solid;
-    color: red;
-    background: cadetblue ;
-    width: 98px;
+
+.nav-item{
+    width: 150px;
     text-align: center;
+    background: beige;
+    margin-left: 2px;
+    border-radius: 6px;
+    box-shadow: 0px 0px grey;
+    -webkit-transition: box-shadow 2s; /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 2s; 
+}
+
+.nav-item:hover{
+    box-shadow: 10px 10px grey;
 }
