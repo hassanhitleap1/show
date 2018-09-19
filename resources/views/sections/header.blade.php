@@ -7,18 +7,20 @@ $collection=Category::all();
         <div class="top-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="logo">
                             <a href="{{url('/')}}"><img src="{{asset('/smartbuy/images/logo-1.png')}}" alt="" /></a>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9">
+                    <div class="col-lg-7 col-md-7 col-sm-9 col-xs-9">
                         <nav class="main-nav">
                             <a href="#" class="toggle-mobile-menu"><span></span></a>
                             <ul class="list-inline">
-                                <li><a href="{{asset('/home')}}">Home</a></li>
+                                <li class="menu-item" style="background:red;"><span class="fa fa-address-book  fa-2x"></span><a href="{{asset('/home')}}">Home</a></li>
                                 @foreach ($collection as $item)
-                                    <li><a href="{{asset('?category='.$item->name)}}">{{$item->name}}</a></li>
+                                    <li class="menu-item" style="background:{{$item->color}};">
+                                        <span class="{{$item->classes}} fa-2x"></span>
+                                        <a href="{{asset('?category='.$item->name)}}">{{$item->name}}</a></li>
                                 @endforeach
                                     
                             </ul>
@@ -29,7 +31,7 @@ $collection=Category::all();
                             <ul class="list-inline">
                                 <li class="mini-cart-box" >
                                     @guest
-                                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i><sup></sup></a>
+                                    <a href="#"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i><sup></sup></a>
                                     <div class="mini-cart-content">
                                         <div class="contact-form">
                                             <div class="box-product box-has-filter">
@@ -95,6 +97,9 @@ $collection=Category::all();
                                         <a  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="fa fa-user-o" aria-hidden="true"></i><sup>{{substr(Auth::user()->email, -5 )}} ...</sup></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <ul>
+                                                @if(Auth::user()->admin)
+                                                <li><a href="{{url('/admin')}}" class="fa fa-gears" > admin</a></li>
+                                                @endif
                                                 <li><a href="{{url('my-favorite')}}" class="fa fa-save" > My Favorite</a></li>
                                                 <li>
                                                     <a class="fa fa-sign-out" href="{{ route('logout') }}" onclick="event.preventDefault();

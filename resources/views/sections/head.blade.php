@@ -21,5 +21,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('smartbuy/css/color.css')}}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{{asset('smartbuy/css/theme.css')}}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{{asset('smartbuy/css/responsive.css')}}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}" media="all"/>
     <!-- <link rel="stylesheet" type="text/css" href="css/rtl.css" media="all"/>  -->
 </head>

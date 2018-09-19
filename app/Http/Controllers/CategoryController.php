@@ -33,6 +33,7 @@ class CategoryController extends BaseController
        $validator = Validator::make($request->all(), [
         'name' => 'required',
         'color'=>'required',
+        'classes'=>'required',
         ]);
 
         if ($validator->fails()) {
@@ -40,6 +41,7 @@ class CategoryController extends BaseController
         }
         $category->name=$request->get('name');
         $category->color=$request->get('color');
+        $category->classes=$request->get('classes');
         $category->save();
        return redirect('/admin/category');
     }

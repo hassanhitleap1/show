@@ -1,0 +1,22 @@
+.menu-item{
+    border: 1px solid;
+    width: 119px;
+    height: 61px;
+    text-align: center;
+    /* margin: 1px; */
+    border-radius: 15px;
+    -webkit-transition: width 2s, height 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s, height 2s;
+    
+}
+.fa{
+    margin: 5px;
+}
+
+.menu-item:hover{
+    width: 190px;
+    height: 80px;
+}
+.customize.various{
+    word-wrap: break-word;
+}

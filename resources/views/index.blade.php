@@ -31,6 +31,7 @@
                     <div class="row" id="products">
                         @foreach ($products as $product)
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <h4>{{$product->name}}</h4>
                                 <div class="item">
                                     <div class="product-extra-link">
                                         <a href="{{$product->link}}" class="quick-view various" data-fancybox-type="iframe"><i class="fa fa-eye fa-2x" aria-hidden="true"></i><span>Quick View</span></a>
@@ -46,7 +47,7 @@
                                         <a href="{{$product->link}}" class="cart">Buy product <i class="fa " aria-hidden="true"></i></a>
                                         <ins class="price"><sup>$</sup>{{floor($product->price)}}<sup>.{{ltrim(($product->price - floor($product->price)),"0.")}}</sup></ins>
                                     </div>
-                                    <div class="customize various" > {{$product->description}}</div>
+                                    <div class="customize various" > {{ substr($product->description,0,100)}}...</div>
                                 </div>
                         </div>
                         @endforeach
