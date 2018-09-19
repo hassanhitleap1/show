@@ -1,5 +1,11 @@
-
-.nav-item{
+body{
+    font-family: Comic Sans MS;
+    font-weight: bold;
+}
+.navbar{
+    color: white;
+}
+.   {
     width: 150px;
     text-align: center;
     background: beige;
@@ -12,4 +18,8 @@
 
 .nav-item:hover{
     box-shadow: 10px 10px grey;
+}
+
+.nav-link{
+    color: white !important; 
 }
