@@ -65,13 +65,16 @@ body{
     right: 6px;
     margin-top: 15px;
     margin-right: 18px;
-    display: none;
-    -webkit-transition: display 2s; 
-    transition: display 2s; 
+    opacity: 0;
 }
 
 .card:hover  .button-save{
-    display: flex;
+    opacity: 1;
+    -webkit-transition: opacity 0.85s ease-in;
+    -moz-transition: opacity 0.85s ease-in;
+     -ms-transition: opacity 0.85s ease-in;
+      -o-transition: opacity 0.85s ease-in;
+         transition: opacity 0.85s ease-in;
 }
 
 

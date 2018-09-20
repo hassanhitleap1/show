@@ -34,7 +34,7 @@
                </div>
                <div class="col col-lg-4">
                   <ul class="float-right list-inline">
-                     <a>
+                     <a id="loginClick">
                         <li class="list-inline-item fas fa-sign-in-alt"></li>
                         Login
                      </a>
@@ -270,7 +270,7 @@
       <!-- Modal loginModal end   -->
       <!-- Central Modal Medium Info -->
       <div class="modal fade" id="centralModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-         <div class="modal-dialog modal-notify modal-info" role="document">
+         <div class="modal-dialog modal-notify modal-info modal-dialog-centered" role="document">
             <!--Content-->
             <div class="modal-content">
                <!--Header-->
@@ -302,8 +302,15 @@
       <!-- js model -->
       <script>
          $(document).ready(function () {
-           $('#loginModal').modal('show');
-           $('#centralModalInfo').modal('show');
+             $("#loginClick").click(function (e) { 
+                 e.preventDefault();
+                 $('#loginModal').modal('show');
+             });
+             $(".button-save").click(function (e) { 
+                 e.preventDefault();
+                 $('#centralModalInfo').modal('show');
+             });
+           
          });
       </script>
       <!-- end js model -->
