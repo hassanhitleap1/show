@@ -24,6 +24,45 @@ body{
     color: white !important; 
 }
 
-.carousel-control span.glyphicon {
-    color: red;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-image: none;
 }
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: #166ba2;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: #166ba2;
+}
+
+.list-inline-item.active{
+    color: white !important;
+    background: #166ba2;
+    padding: 10px;
+}
+.dawnlist>.list-inline-item{
+    color:  #166ba2;
+}
+
+
+.button-save{
+    position: absolute;
+    right: 6px;
+    margin-top: 15px;
+    margin-right: 18px;
+}
+
+
