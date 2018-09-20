@@ -146,14 +146,18 @@ section .section-title {
 #footer ul.quick-links li:hover a i {
     font-weight: 700;
 }
-
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    border: none;
+}
 @media (max-width:767px){
 	#footer h5 {
-    padding-left: 0;
-    border-left: transparent;
-    padding-bottom: 0px;
-    margin-bottom: 10px;
+        padding-left: 0;
+        border-left: transparent;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+    }
 }
-}
+
+
 
 

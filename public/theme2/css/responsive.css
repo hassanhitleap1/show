@@ -11,4 +11,8 @@
   .nav-link{ 
     margin-top: -33px;
   }
+  .dropdown-menu.show{
+    background: #adadad;
+  }
+
 } 
