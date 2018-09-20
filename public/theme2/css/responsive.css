@@ -14,5 +14,11 @@
   .dropdown-menu.show{
     background: #adadad;
   }
-
+  .card-text{
+    display: none;
+  }
+  .button-save{
+    opacity: 1;
+  }
 } 
+
