@@ -63,6 +63,15 @@ body{
     right: 6px;
     margin-top: 15px;
     margin-right: 18px;
+    display: none;
+    -webkit-transition: display 2s; 
+    transition: display 2s; 
 }
+
+.card:hover  .button-save{
+    display: flex;
+}
+
+
 
 
