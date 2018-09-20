@@ -76,7 +76,9 @@ body{
       -o-transition: opacity 0.85s ease-in;
          transition: opacity 0.85s ease-in;
 }
-
+.card-title{
+    font-weight: bold;
+}
 
 
 
